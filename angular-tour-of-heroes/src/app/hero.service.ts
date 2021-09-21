@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Hero } from './Hero';
-import  { HEROES } from './mock-heroes';
+import { HEROES } from './mock-heroes';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,8 @@ import  { HEROES } from './mock-heroes';
 export class HeroService {
   constructor() { }
 
-  getHeroes() : Hero[] {
-    return HEROES;
+  getHeroes() : Observable<Hero[]> {
+    const heroes = of(HEROES); // creates an observable array from the regular array HEROES
+    return heroes;
   }
 }
